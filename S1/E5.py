@@ -14,7 +14,7 @@ def main():
     nb_pieces = int(input("Entrer un nombre de pieces : "))
     print(f"Pour {nb_pieces} pièces, le prix unitaire est de {prix_unitaire}€")
     print(f"- Prix avant rabais : {prix_unitaire} * {nb_pieces}€")
-    print(f"- Montant du rabais : {rabais * 100}%")
+    print(f"- Montant du rabais : ")
     print(calcul_pieces(prix_unitaire, nb_pieces, rabais=10/100))
 
 
