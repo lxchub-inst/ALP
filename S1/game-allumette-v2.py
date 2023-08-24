@@ -18,7 +18,8 @@ def game_allumette():
 
             # On initialise la variable à 0 pour entrer dans la boucle
             allu_joueur1 = 0
-            
+
+            # On vérifie que le nombre d'allumettes prises est bien entre 1 et 3
             while allu_joueur1 < 1 or allu_joueur1 > 3:
                 allu_joueur1 = int(
                     input("Joueur 1 : Combien d'allumettes voulez-vous prendre (entre 1 et 3) ? "))
@@ -35,9 +36,10 @@ def game_allumette():
 
             print(f"Joueur 1 : A pris {allu_joueur1} allumettes")
         elif depart_joueurs == nom_joueurs[1]:
-
-            # Éviter de prendre plus que ce qu'il reste
-            # On initialise la variable pour entrer dans la boucle
+            """
+            Éviter de prendre plus que ce qu'il reste
+            On initialise la variable pour entrer dans la boucle
+            """
             allu_ordi = random.randint(1, min(3, allu_total))
             allu_total -= allu_ordi
             print(f"Ordinateur 1 : A pris {allu_ordi} allumettes")

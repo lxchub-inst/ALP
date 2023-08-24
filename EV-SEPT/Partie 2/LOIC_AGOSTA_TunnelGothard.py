@@ -33,6 +33,8 @@ def poids_vehicule(poids):
         return 42
     elif poids > 38:
         return 50
+    else:
+        return 0
 
 
 def longeur_vehicule(longeur):
@@ -45,7 +47,7 @@ def longeur_vehicule(longeur):
 def calcul_prix(categorie, longeur, poids):
     if categorie == CAT_1:
         return 15
-    elif categorie == CAT_2 or CAT_3:
+    elif categorie == CAT_2 or categorie == CAT_3:
         prix_poids = poids_vehicule(poids)
         prix_longeur = longeur_vehicule(longeur)
         prix_final = prix_poids + prix_longeur
