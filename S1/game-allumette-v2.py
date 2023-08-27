@@ -9,7 +9,6 @@ def game_allumette():
     allu_depart = random.choice([ALLU_DEPART_16, ALLU_DEPART_4])
     nom_joueurs = ["Joueur 1", "Ordinateur 1"]
     depart_joueurs = random.choice(nom_joueurs)
-    tab_allu = []
 
     allu_total = allu_depart
 
@@ -17,14 +16,17 @@ def game_allumette():
 
     while allu_total > 0:
 
-        def affichage_allumettes(alluemette):
-            tab_allu.clear() # On vide le tableau pour éviter les doublons
-            for i in range(alluemette):
-                tab_allu.append("I") # On ajoute un I à chaque tour de boucle
-                print("".join(tab_allu)) # On affiche le tableau sous forme de chaîne de caractères
-                """ 
-                Le .join permet de transformer une liste en chaîne de caractères
-                """
+        def affichage_allumettes(allumettes):
+            tab_joueur = []  # On initialise une liste pour stocker les allumettes
+
+            for i in range(allumettes):
+                # On ajoute un "I" à chaque tour de boucle
+                tab_joueur.append("I")
+            # On affiche le tableau d'allumettes séparées par un espace
+            if tab_joueur == []:
+                print("Il n'y a plus d'allumettes !")
+            else:
+                print(f"Allumettes restantes : {np.array(tab_joueur)}")
 
         if depart_joueurs == nom_joueurs[0]:
 
@@ -41,9 +43,6 @@ def game_allumette():
                 if allu_joueur1 > allu_total:
                     print(
                         f"Vous ne pouvez pas prendre plus que ce qu'il reste ({allu_total} allumettes) !")
-                    allu_joueur1 = 0  # Réinitialisation pour refaire la saisie
-
-            # On soustrait le nombre d'allumettes prises au total par celui du joueur
             allu_total -= allu_joueur1
 
             # On actualise la liste d'allumettes pour le joueur suivant
@@ -60,6 +59,7 @@ def game_allumette():
             allu_total -= allu_ordi
             print(f"Ordinateur 1 : A pris {allu_ordi} allumettes")
 
+        # On affiche le nombre d'allumettes restantes pour les deux joueurs
         print(f"Il reste {allu_total} allumettes.")
 
         # On actualise la liste d'allumettes pour le joueur suivant
