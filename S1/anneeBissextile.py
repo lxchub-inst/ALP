@@ -38,9 +38,9 @@ def bissextile(annee, diviseur):
         return
 
     if bissextile:
-        print("L'année est bissextile")
+        print("\n L'année est bissextile")
     else:
-        print("L'année n'est pas bissextile")
+        print("\n L'année n'est pas bissextile")
 
 
 def main():
