@@ -1,3 +1,11 @@
+""" 
+Prénom : Loic
+Nom : AGOSTA
+Date : 08.09..2023
+
+Version : 2
+"""
+
 # Importation des modules
 import random
 import numpy as np
