@@ -8,7 +8,6 @@ Version : 2
 
 # Importation des modules
 import random
-import numpy as np
 
 # Définition des constantes
 ALLU_DEPART_MAX = 16
