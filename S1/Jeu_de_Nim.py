@@ -22,13 +22,13 @@ def game_allumette():
 
     while allu_total > 0:
 
-        # def affichage_allumettes(allumettes):
-        #     tab_joueur = ["I" for i in range(allumettes)] # Création d'un tableau avec autant de "I" que d'allumettes restantes
+        def affichage_allumettes(allumettes):
+            tab_joueur = ["I" for i in range(allumettes)] # Création d'un tableau avec autant de "I" que d'allumettes restantes
             
-        #     if tab_joueur == []:
-        #         print("Il n'y a plus d'allumettes !")
-        #     else:
-        #         print(f"Allumettes restantes : {np.array(tab_joueur)}") # np.array() pour afficher le tableau en une ligne
+            if tab_joueur == []:
+                print("Il n'y a plus d'allumettes !")
+            else:
+                print(f"Allumettes restantes : {np.array(tab_joueur)}") # np.array() pour afficher le tableau en une ligne
 
         if depart_joueurs == nom_joueurs[0]:
             allu_joueur1 = 0
@@ -43,7 +43,7 @@ def game_allumette():
                     """
 
             allu_total -= allu_joueur1 # On retire le nombre d'allumettes que le joueur a pris au nombre d'allumettes restantes
-            # affichage_allumettes(allu_total)
+            affichage_allumettes(allu_total)
             print(f"Joueur 1 : A pris {allu_joueur1} allumettes")
 
         elif depart_joueurs == nom_joueurs[1]:
@@ -52,7 +52,7 @@ def game_allumette():
             print(f"Ordinateur 1 : A pris {allu_ordi} allumettes")
 
         print(f"Il reste {allu_total} allumettes.")
-        # affichage_allumettes(allu_total)
+        affichage_allumettes(allu_total)
 
         depart_joueurs = nom_joueurs[1] if depart_joueurs == nom_joueurs[0] else nom_joueurs[0] # On change de joueur, si c'était le joueur 1, c'est maintenant l'ordi et vice-versa
 
