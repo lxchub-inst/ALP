@@ -54,8 +54,8 @@ def choix_joueurs():
                     input("Combien d'allumettes voulez-vous prendre (entre 1 et 3) ? "))
 
                 if allu_joueur1 < 1 or allu_joueur1 > min(3, allu_total):
-                    print(f"Vous ne pouvez prendre que 1, 2 ou 3 allumettes (maximum {min(3, allu_total)}) !")¨
-                    
+                    print(f"Vous ne pouvez prendre que 1, 2 ou 3 allumettes (maximum {min(3, allu_total)}) !")
+
                     """ Si le joueur entre un nombre d'allumettes incorrect, on lui affiche un message d'erreur et on lui redemande de saisir un nombre d'allumettes"""
 
             # On retire le nombre d'allumettes que le joueur a pris au nombre d'allumettes restantes
