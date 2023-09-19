@@ -13,11 +13,13 @@ import numpy as np
 # Définition des constantes
 ALLU_DEPART_MAX = 16
 ALLU_DEPART_MIN = 4
+MIN_ALLU = 1
+MAX_ALLU = 3
 
 # Définition des fonctions
 
 
-def démarrage_jeu():
+def demarrage_jeu():
     allu_depart = random.choice([ALLU_DEPART_MIN, ALLU_DEPART_MAX])
     print("Bienvenue sur le Jeu de Nim !")
     print("Le but du jeu est de prendre la dernière allumette.")
@@ -40,14 +42,14 @@ def joueurs(allu_total, depart_joueurs, nom_joueurs):
     while allu_total != 0:
         if depart_joueurs == nom_joueurs[0]:
             all_joueur = 0
-            while all_joueur < 1 or all_joueur > min(3, allu_total):
-                all_joueur = int(input(f"Combien d'allumettes voulez-vous prendre (entre 1 et 3, au maximum {min(3, allu_total)}) ? : "))
-                if all_joueur < 1 or all_joueur > min(3, allu_total):
-                    print(f"Vous ne pouvez que prendre entre 1 et {min(3, allu_total)} allumettes.")
+            while all_joueur < MIN_ALLU or all_joueur > min(MAX_ALLU, allu_total):
+                all_joueur = int(input(f"Combien d'allumettes voulez-vous prendre (entre {MIN_ALLU} et {MAX_ALLU}, au maximum {min(MAX_ALLU, allu_total)}) ? : "))
+                if all_joueur < MIN_ALLU or all_joueur > min(MAX_ALLU, allu_total):
+                    print(f"Vous ne pouvez que prendre entre 1 et {min(MAX_ALLU, allu_total)} allumettes.")
             allu_total -= all_joueur
             print(f"Vous avez retiré {all_joueur} allumettes")
         elif depart_joueurs == nom_joueurs[1]:
-            allu_ordi = random.randint(1, min(3, allu_total))
+            allu_ordi = random.randint(MIN_ALLU, min(MAX_ALLU, allu_total))
             allu_total -= allu_ordi
             print(f"Ordinateur a pris {allu_ordi} allumettes")
         depart_joueurs = changer_joueurs(depart_joueurs, nom_joueurs)
@@ -64,7 +66,7 @@ def afficher_gagnant(depart_joueurs, nom_joueurs):
 def jeu_nim():
     nom_joueurs = ["Joueur", "Ordinateur"]
     depart_joueurs = random.choice(nom_joueurs)
-    allu_depart = démarrage_jeu()
+    allu_depart = demarrage_jeu()
     allu_total = allu_depart
 
     joueurs(allu_total, depart_joueurs, nom_joueurs)
