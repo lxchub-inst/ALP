@@ -10,6 +10,7 @@ LONG_SUPP = 8
 TAXE_SUPP = 5
 SUPPLEMENT_AVEC_REMORQUE = 30
 
+
 def prix_poids(poids):
     if poids < 4:
         return 15
@@ -56,7 +57,6 @@ def main():
     longeur = int(input("Entrez la longeur du véhicule : "))
     poids = int(input("Entrez le poids du véhicule : "))
 
-    prix_billet(categorie, poids, longeur)
     prix_total = prix_billet(categorie, poids, longeur)
     afficher_prix_total(categorie, prix_total)
 
