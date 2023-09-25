@@ -3,46 +3,91 @@ Nom : AGOSTA LOIC
 Version : 1.0
 """
 
-# Définition des constantes
-PRIX_ENTREE_DEGUISES = 10
-PRIX_ENTREE_NON_DEGUISES = 15
-PRIX_BOISSON_SUP = 7
+# Constantes
 
 DEGUISES = 1
 NON_DEGUISES = 2
 
-def calculer_prix_entree(nb_personne, type_personne):
+PRIX_ENTREE_SANS_DEGUISEMENT = 15
+PRIX_ENTREE_AVEC_DEGUISEMENT = 10
+ENTRE_GRATUITE_A_PARTIR_DE = 4
+
+
+# Fonctions et procédures
+def calcul_prix_entree(nb_personne, type_personne):
     if type_personne == DEGUISES:
-        # Si tout le groupe est déguisé, appliquer le tarif réduit de 10 CHF
-        if nb_personne >= 4:
-            return (nb_personne * PRIX_ENTREE_DEGUISES) - PRIX_ENTREE_DEGUISES # Entrée gratuite pour le groupe
+        if nb_personne > 1 and type_personne < 4:
+            return nb_personne * PRIX_ENTREE_AVEC_DEGUISEMENT
         else:
-            return nb_personne * PRIX_ENTREE_DEGUISES
+            return nb_personne * PRIX_ENTREE_AVEC_DEGUISEMENT - PRIX_ENTREE_AVEC_DEGUISEMENT
     elif type_personne == NON_DEGUISES:
-        return nb_personne * PRIX_ENTREE_NON_DEGUISES
+        return nb_personne * PRIX_ENTREE_SANS_DEGUISEMENT
 
-def calculer_prix_boissons(boissons_sup):
-    prix_boissons_supp = boissons_sup * PRIX_BOISSON_SUP
-    # Calcul des boissons gratuites en fonction du montant dépensé
-    boissons_gratuites = prix_boissons_supp // 50 + prix_boissons_supp // 100
-    return prix_boissons_supp - (boissons_gratuites * PRIX_BOISSON_SUP) + PRIX_BOISSON_SUP
+def calcul_prix_final(nb_boisson, prix_entree):
+    return prix_entree + (nb_boisson * 7)
 
-def afficher_prix_total(prix_entree, prix_boissons):
-    prix_total = prix_entree + prix_boissons
-    print(f"Prix à payer : {prix_total} CHF")
+def calcul_boisson_offerte(prix_final, nb_personne, nb_boisson):
+    if prix_final < 50:
+        return nb_personne + nb_boisson
+    else:
+        bouteille_offerte = 1
+        if prix_final >= 100:
+            bouteille_offerte += prix_final // 100
+        return bouteille_offerte + nb_personne + nb_boisson
+
+def affichage(nb_boisson_offerte, nb_personne, prix_final):
+    print(f"Entrée pour {nb_personne} personnes, Bon pour {nb_boisson_offerte} boissons, Prix à payer : {prix_final}.-")
 
 def main():
-    nb_personne = int(input("Entrez le nombre de personnes : "))
-    type_personne = int(input("Entrez le type de personne (1 pour déguisées, 2 pour non déguisées) : "))
-    boissons_sup = int(input("Entrez le nombre de boissons supplémentaires : "))
-
-    prix_entree = calculer_prix_entree(nb_personne, type_personne)
-    prix_boissons = calculer_prix_boissons(boissons_sup)
-
-    afficher_prix_total(prix_entree, prix_boissons)
-
+    nb_personne = int(input("Entrez le nombre de personne : "))
+    type_personne = int(input("Entrez le type de personne\nSi vous êtes déguisés tapez 1\nSi vous n'êtes pas déguisé tapez 2 : "))
+    nb_boisson = int(input("Combien de boissons voulez-vous commandé : "))
+    
+    prix_entree = calcul_prix_entree(nb_personne, type_personne)
+    prix_final = calcul_prix_final(nb_boisson, prix_entree)
+    nb_boisson_offerte = calcul_boisson_offerte(prix_final, nb_personne, nb_boisson)
+    affichage(nb_boisson_offerte, nb_personne, prix_final)
 if __name__ == '__main__':
     main()
+
+# # Définition des constantes
+# PRIX_ENTREE_DEGUISES = 10
+# PRIX_ENTREE_NON_DEGUISES = 15
+# PRIX_BOISSON_SUP = 7
+
+# DEGUISES = 1
+# NON_DEGUISES = 2
+
+# def calculer_prix_entree(nb_personne, type_personne):
+#     if type_personne == DEGUISES:
+#         # Si tout le groupe est déguisé, appliquer le tarif réduit de 10 CHF
+#         if nb_personne >= 4:
+#             return (nb_personne * PRIX_ENTREE_DEGUISES) - PRIX_ENTREE_DEGUISES # Entrée gratuite pour le groupe
+#         else:
+#             return nb_personne * PRIX_ENTREE_DEGUISES # Retourne le prix total des entrées comme résultat
+#     elif type_personne == NON_DEGUISES:
+#         return nb_personne * PRIX_ENTREE_NON_DEGUISES # Retourne le prix total des entrées comme résultat
+
+# def calculer_prix_boissons(boissons_sup):
+#     prix_boissons_supp = boissons_sup * PRIX_BOISSON_SUP
+#     # Calcul des boissons gratuites en fonction du montant dépensé
+#     boissons_gratuites = prix_boissons_supp // 50 + prix_boissons_supp // 100
+#     return prix_boissons_supp - (boissons_gratuites * PRIX_BOISSON_SUP) + PRIX_BOISSON_SUP # Retourne le prix total des boissons comme résultat
+
+# def afficher_prix_total(prix_entree, prix_boissons):
+#     prix_total = prix_entree + prix_boissons
+#     print(f"Prix à payer : {prix_total} CHF")
+
+# def main():
+#     nb_personne = int(input("Entrez le nombre de personnes : "))
+#     type_personne = int(input("Entrez le type de personne (1 pour déguisées, 2 pour non déguisées) : "))
+#     boissons_sup = int(input("Entrez le nombre de boissons supplémentaires : "))
+
+#     prix_entree = calculer_prix_entree(nb_personne, type_personne)
+#     prix_boissons = calculer_prix_boissons(boissons_sup)
+
+#     afficher_prix_total(prix_entree, prix_boissons)
+
 
 """
 # Épreuve du 29.09.2021
