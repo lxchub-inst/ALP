@@ -53,15 +53,17 @@ def get_user_choices():
 
 def get_tot_calories(main_course, side, drink):
     # Exercice 4 : Calcul des calories en fonction des choix de l'utilisateur sans effet papillon
+    pass
    
 
 # Procédure main()
 def main():
-    #main_choice, side_choice, drink_choice = get_user_choices()
+    # main_choice, side_choice, drink_choice = get_user_choices()
     
     #Exercice 4 appel de la fonction get_tot_calories
     
     #Exercice 4 affichage du résultat
+    pass
     
 # Appel de la procédure main()
 if __name__ == "__main__":
