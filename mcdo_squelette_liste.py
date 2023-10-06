@@ -23,14 +23,14 @@ def show_list_items(ze_list):
 #de la liste passée en paramètre (ze_liste)
 def get_index_of_max(ze_list):
     max_index = 0
-    for i in range(1, len(ze_list)):
+    for i in range(len(ze_list)):
         if ze_list[i] > ze_list[max_index]:
             max_index = i
     return max_index
 
 def get_index_of_min(ze_list):
     min_index = 0
-    for i in range(1, len(ze_list)):
+    for i in range(len(ze_list)):
         if ze_list[i] < ze_list[min_index]:
             min_index = i
     return min_index
@@ -86,7 +86,6 @@ def get_tot_calories_with_butterfly(main_choice, side_choice, drink_choice):
         surplus = original_calories + (original_calories * SURPLUS_CAL)
     else:
         surplus = original_calories
-
     return surplus
 
 
@@ -104,10 +103,6 @@ def main():
     #Exercice 4 affichage du résultat
     print("\n Calories total de votre menu", total_calories, "kcal")
     print("\n Calories total de votre menu", total_calories_with_butterfly, "kcal")
-
-    print(get_index_of_max(MAINS_CAL))
-    print(get_index_of_max(SIDES_CAL))
-
 
 
 # Appel de la procédure main()
