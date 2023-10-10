@@ -18,7 +18,6 @@ SURPLUS_CAL = 0.25
 def show_list_items(ze_list):
     for i in range(len(ze_list)):
         print(ze_list[i])
-    return None
 
 
 # Exercice 3 écrivez une fonction qui retourne l'index de la valeur la plus grande
@@ -115,17 +114,19 @@ def get_combinations(options, options_calories, current_combo, index, total_calo
 
 
 def get_item_under_300_calories():
-    max_calories = 300
+    list_options = []
+    max_callories = 300
 
-    options = [MAINS, SIDES, DRINKS]
-    options_calories = [MAINS_CAL, SIDES_CAL, DRINKS_CAL]
-
-    all_combinations = get_combinations(options, options_calories, [], 0, 0, max_calories)
-
-    for combo in all_combinations:
-        print("Le menu", combo[0], combo[1], combo[2], "fait moins de 300 calories")
-
-    return all_combinations
+    for i in range(len(MAINS_CAL)):
+        if MAINS_CAL[i] < max_callories:
+            list_options.append(MAINS[i])
+    for j in range(len(SIDES_CAL)):
+        if SIDES_CAL[j] < max_callories:
+            list_options.append(SIDES[j])
+    for k in range(len(DRINKS_CAL)):
+        if DRINKS_CAL[k] < max_callories:
+            list_options.append((DRINKS[k]))
+    return list_options
 
 
 # Procédure main()
@@ -140,8 +141,8 @@ def main():
     print("\n Calories total de votre menu", total_calories, "kcal")
     print("\n Calories total de votre menu", total_calories_with_butterfly, "kcal")
 
-    get_item_under_300_calories()
-
+    print("\n Les options qui font moins de 300 calories sont : ")
+    show_list_items(get_item_under_300_calories())
 
 # Appel de la procédure main()
 if __name__ == "__main__":
