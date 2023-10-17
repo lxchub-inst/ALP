@@ -13,6 +13,34 @@ DRINKS_CAL = [175, 1, 0, 80]
 # Constantes pour le surplus
 SURPLUS_CAL = 0.25
 
+CAT_MAINS = 1
+CAT_SIDES = 2
+CAT_DRINKS = 3
+
+LIST_ORDER_J = ["1. Big Mac","1. Frites","1. Coca Cola", "2. Mc Nuggets (6)", "3. Salade Verte", "2. Patatos", "2. Coca Zero", "4. Mc Chicken", "4. Thé froid"]
+LIST_CAL_ORDER_J = [498, 435, 175, 257, 90, 389, 1, 393, 80]
+LIST_CAT_ORDER_J = [CAT_MAINS, CAT_SIDES, CAT_DRINKS, CAT_MAINS, CAT_SIDES, CAT_SIDES, CAT_DRINKS, CAT_MAINS, CAT_DRINKS]
+
+
+LIST_ORDER_A = ["1. Big Mac","1. Coca Cola", "2. Mc Nuggets (6)", "3. Salade Verte", "4. Mc Chicken", "4. Thé froid"]
+LIST_CAL_ORDER_A = [498, 175, 257, 90, 393, 80]
+LIST_CAT_ORDER_A = [CAT_MAINS, CAT_DRINKS, CAT_MAINS, CAT_SIDES, CAT_MAINS, CAT_DRINKS]
+
+
+def order_recap(list_orders, list_cals, list_cat, cat_calcul):
+    total_mains = 0
+    for i in range(len(list_orders)):
+        if list_cat[i] == cat_calcul:
+            total_mains += list_cals[i]
+    return total_mains
+
+
+def test_order_recap():
+    print("Pour la liste de A, mains : ")
+    print(order_recap(LIST_ORDER_A, LIST_CAL_ORDER_A, LIST_CAT_ORDER_A, CAT_MAINS))
+    print("Pour la liste de J, drinks :")
+    print(order_recap(LIST_ORDER_J, LIST_CAL_ORDER_J, LIST_CAT_ORDER_J, CAT_DRINKS))
+
 
 # Exercice 2 écrivez une fonction qui affiche le contenu de la liste passée en paramètre (ze_liste)
 def show_list_items(ze_list):
@@ -143,6 +171,8 @@ def main():
 
     print("\n Les options qui font moins de 300 calories sont : ")
     show_list_items(get_item_under_300_calories())
+
+    test_order_recap()
 
 # Appel de la procédure main()
 if __name__ == "__main__":
