@@ -120,27 +120,6 @@ def get_tot_calories_with_butterfly(main_choice, side_choice, drink_choice):
     return surplus
 
 
-def get_combinations(options, options_calories, current_combo, index, total_calories, max_calories):
-    if index == len(options):
-        if total_calories < max_calories:
-            return [current_combo]
-        else:
-            return []
-
-    option_combinations = []
-    for i in range(len(options[index])):
-        option = options[index][i]
-        option_calories = options_calories[index][i]
-
-        new_combo = current_combo + [option]
-        new_total_calories = total_calories + option_calories
-
-        option_combinations += get_combinations(options, options_calories, new_combo, index + 1, new_total_calories,
-                                                max_calories)
-
-    return option_combinations
-
-
 def get_item_under_300_calories():
     list_options = []
     max_callories = 300
