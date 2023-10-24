@@ -85,8 +85,8 @@ def mi_parcours(parcours):
 def meilleur_performance(parcours):
     meilleur = 0
     for i in range(len(parcours)):
-        if parcours[i] > meilleur:
-            meilleur = parcours[i]
+        if parcours[i] > parcours[meilleur]:
+            meilleur = i
     return meilleur
 
 
@@ -118,7 +118,8 @@ def recap(parcours, nom):
         if tjrs_en_course(parcours):
             print(nom, "est toujours en course après", distance_parcouru(parcours), "km")
             print("Il reste", distance_restantes(parcours), "km qui devrait être parcourus en",
-                  jours_restants(parcours), "jours(s) s'il maintient sa moyenne qui est de ", vitesse_moyenne(parcours),
+                  jours_restants(parcours), "jours(s) s'il maintient sa moyenne qui est de",
+                  arrondi_dixieme(vitesse_moyenne(parcours)),
                   "km / jourus")
         else:
             print(nom, "a abandonné après", nb_jours(parcours), "jours")
@@ -126,17 +127,41 @@ def recap(parcours, nom):
         print("Ce qui représente une moyenne globlale de", vitesse_moyenne(parcours), "km par jour")
     evolution_moyenne(parcours)
     if tjrs_en_course(parcours):
-        print("Jusqu'a mainteantnt", end="")
+        print("Jusqu'a maintenant", end="")
     else:
         print("Au final", end="")
     index_meilleur_jour = meilleur_performance(parcours)
-    print("Sa meilleur performance est de ", parcours[index_meilleur_jour], "km")
+    print(" sa meilleur performance est de ", parcours[index_meilleur_jour], "km")
+
+
+def calcul_jours_depassement(parcours1, parcours2):
+    nb_parcours1 = nb_jours(parcours1)
+    nb_parcours2 = nb_jours(parcours2)
+
+    if nb_parcours1 < nb_parcours2:
+        nb_depassement = nb_parcours1
+    else:
+        nb_depassement = nb_parcours2
+    return nb_depassement
 
 
 # precédure depassement à compléter
 def depassement(parcours1, parcours2, nom1, nom2):
-    '''A CODER'''
-    pass
+    print("Comparaison entre", nom1, "et", nom2)
+    somme_parcours1 = 0
+    somme_parcours2 = 0
+    nb_jours = 0
+    nb_depassement = calcul_jours_depassement(parcours1, parcours2)
+
+    while nb_jours < nb_depassement and somme_parcours1 <= somme_parcours2:
+        somme_parcours1 += parcours1[nb_jours]
+        somme_parcours2 += parcours2[nb_jours]
+        nb_jours += 1
+
+    if nb_depassement > nb_jours:
+        print(nom1, "a dépassé pour la première fois", nom2, "au jours", nb_jours)
+    else:
+        print(nom1, "n'a jamais dépassé", nom2)
 
 
 # Procedure main fournie -- NE PAS MODIFIER !!

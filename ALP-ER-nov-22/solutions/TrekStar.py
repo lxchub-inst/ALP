@@ -81,7 +81,8 @@ def afficher_evolution_moyenne(parcours):
 def nombre_de_jours_restants(parcours):
     return arrondi_superieur(distance_restante(distance_parcourue(parcours)) / vitesse_moyenne_globale(parcours))
 
-
+# Cette fonction est utile pour la procédure depassement car elle permet de déterminer le nombre de jours à comparer
+# entre les deux parcours (le plus petit des deux) pour savoir si un dépassement a eu lieu
 def plus_petit_nombre_de_jours(parcours1, parcours2):
     nb_jours_1 = nombre_de_jours(parcours1)
     nb_jours_2 = nombre_de_jours(parcours2)
