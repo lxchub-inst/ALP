@@ -12,7 +12,8 @@ CAT_MAINS = 1
 CAT_SIDES = 2
 CAT_DRINKS = 3
 
-LIST_ORDER_J = ["1. Big Mac","1. Frites","1. Coca Cola", "2. Mc Nuggets (6)", "3. Salade Verte", "2. Patatos", "2. Coca Zero", "4. Mc Chicken", "4. Thé froid"]
+LIST_ORDER_J = ["1. Big Mac","1. Frites","1. Coca Cola", "2. Mc Nuggets (6)", "3. Salade Verte", "2. Patatos",
+                "2. Coca Zero", "4. Mc Chicken", "4. Thé froid"]
 LIST_CAL_ORDER_J = [498, 435, 175, 257, 90, 389, 1, 393, 80]
 LIST_CAT_ORDER_J = [CAT_MAINS, CAT_SIDES, CAT_DRINKS, CAT_MAINS, CAT_SIDES, CAT_SIDES, CAT_DRINKS, CAT_MAINS, CAT_DRINKS]
 
