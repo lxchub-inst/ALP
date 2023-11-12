@@ -8,7 +8,8 @@ NOMBRE_DE_CATEGORIES = 4
 
 
 # Vos constantes ici
-
+TRANCHE_BONS = 400
+BON_DEDIE = 5
 
 # Fonction fournie -- NE PAS MODIFIER !!
 def arrondi2(montant):  # arrondi un nombre au centiÃ¨me pour l'afficher
@@ -32,36 +33,45 @@ def afficher_total_achats(liste_achats):
 
 
 # QUESTION 2
-def total_par_categorie(liste_achats, liste_categories):
-    somme_cat_ = 0
-    for ele_cat in range(len(liste_categories)):
-        if liste_categories[ele_cat] == ele_cat:
-            somme_cat_ += total_achats(liste_achats)
-    return somme_cat_
+def total_par_categorie(liste_achats, liste_categories, categorie):
+    somme_categorie = 0
+    for ele_categorie in range(len(liste_categories)):
+        if liste_categories[ele_categorie] == categorie:
+            somme_categorie += liste_achats[ele_categorie]
+    return somme_categorie
 
 
 def afficher_toutes_les_categories(liste_achats, liste_categories):
-    for ele_cat in range(NOMBRE_DE_CATEGORIES):
-        print("Le montant total pour la catégorie", ele_cat, "est de",
-              total_par_categorie(liste_achats, liste_categories))
+    for ele_categorie in range(NOMBRE_DE_CATEGORIES):
+        print("Le montant total de la catégorie", ele_categorie + 1, "est de", total_par_categorie(liste_achats, liste_categories, ele_categorie + 1))  
 
 
 # QUESTION 3
 def afficher_bons(liste_achats):
-    pass
+    somme_bons = total_achats(liste_achats) // TRANCHE_BONS
+    somme_points = total_achats(liste_achats) % TRANCHE_BONS
+
+    if total_achats(liste_achats) > 1000:
+        print("Vous recevrez", int(somme_bons), "bons de réduction à", BON_DEDIE, "CHF chacun et vous aurez", int(somme_points), "points de plus sur votre comtpe.")
+    else:
+        print("Vous ne recevrez aucun bon de réduction mais vous aurez", int(somme_points), "points de plus sur votre compte.")
 
 
 # QUESTION 4
-def minimum():
-    pass
+def minimum(liste_achats):
+    min_achats = liste_achats[0]
+    for ele_achats in range(len(liste_achats)):
+        if liste_achats[ele_achats] < min_achats:
+            min_achats = liste_achats[ele_achats]
+    return min_achats
 
 
 def afficher_minimum(liste_achats):
-    pass
+    print("Le montant total avec le moins cher offert est de", int(total_achats(liste_achats) - minimum(liste_achats)), "CHF - vous gagnez", minimum(liste_achats), "CHF")
 
 
 # QUESTION 5
-def reduction_au_dela():
+def reduction_au_dela(liste_achats, limite):
     pass
 
 
