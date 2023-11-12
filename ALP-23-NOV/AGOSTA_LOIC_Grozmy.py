@@ -16,25 +16,34 @@ def arrondi2(montant):  # arrondi un nombre au centiÃ¨me pour l'afficher
 
 
 ##############################################
-# procÃ©dures et fonctions Ã  complÃ©ter
+# proc Ã©dures et fonctions Ã  complÃ©ter
 # en supprimant pass et le remplaÃ§ant par votre code
 
 # QUESTION 1
-def total_achats():
-    pass
+def total_achats(liste_achats):
+    somme_achats = 0
+    for ele_achats in range(len(liste_achats)):
+        somme_achats += liste_achats[ele_achats]
+    return somme_achats
 
 
 def afficher_total_achats(liste_achats):
-    pass
+    return "Le montant total (sans réduction) est de", total_achats(liste_achats)
 
 
 # QUESTION 2
-def total_par_categorie():
-    pass
+def total_par_categorie(liste_achats, liste_categories):
+    somme_cat_ = 0
+    for ele_cat in range(len(liste_categories)):
+        if liste_categories[ele_cat] == ele_cat:
+            somme_cat_ += total_achats(liste_achats)
+    return somme_cat_
 
 
 def afficher_toutes_les_categories(liste_achats, liste_categories):
-    pass
+    for ele_cat in range(NOMBRE_DE_CATEGORIES):
+        print("Le montant total pour la catégorie", ele_cat, "est de",
+              total_par_categorie(liste_achats, liste_categories))
 
 
 # QUESTION 3
