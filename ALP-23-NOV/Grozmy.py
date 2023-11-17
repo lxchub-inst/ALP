@@ -67,7 +67,8 @@ def minimum(liste_achats):
 
 
 def afficher_minimum(liste_achats):
-    print("Le montant total avec le moins cher offert est de", int(total_achats(liste_achats) - minimum(liste_achats)), "CHF - vous gagnez", minimum(liste_achats), "CHF")
+    print("Le montant total avec le moins cher offert est de", int(total_achats(liste_achats) - minimum(liste_achats)),
+          "CHF - vous gagnez", minimum(liste_achats), "CHF")
 
 
 # QUESTION 5

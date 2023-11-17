@@ -81,7 +81,9 @@ def main():
     pourcentages = [33, 0, 26.5, 0.28, 1234, 0.4, 0, -1, 29, 0.325]
     pays = ["France", "Suisse", "Irlande", "Italie", "Norvège", "Angleterre", "États-Unis", "Colombie", "Canada",
             "Suède"]
+    print(pourcentages)
     corriger_donnees(pourcentages)
+    print(pourcentages)
     print("-- Résultats après correction de la liste des pourcentages --")
     print("Réduction moyenne:", moyenne_sans_0(pourcentages))
     afficher_pays_le_plus_proche(pays, pourcentages, pourcentage_recherche)
