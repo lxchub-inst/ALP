@@ -12,6 +12,7 @@ def corriger_donnees(lst_pourcentages):
             lst_pourcentages[elements] = 0
         if lst_pourcentages[elements] < 1:
             lst_pourcentages[elements] *= 100
+        lst_pourcentages[elements] = int(lst_pourcentages[elements])
     return lst_pourcentages
 
 
