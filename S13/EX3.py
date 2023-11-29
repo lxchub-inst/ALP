@@ -2,11 +2,12 @@ NOMS = ['Londa','Lenita','Beatrice','Kendrick','Genny','Rolf','Meridith','Hilton
 NB_PLONGEES = [20,120,15,150,5,20,30,60,100,8,20,15,30,79,130,66,24,110,8,23,20,77,60,22,30,80,50,20,10,29]
 
 
-def plonges():
-    dic_plonges = {}
-    for ele_noms in zip(NOMS, NB_PLONGEES):
-        dic_plonges[ele_noms[0]] = ele_noms[1]
-    return dic_plonges
+def nom_plongeur(nom):
+    for ele_noms in range(len(NOMS)):
+        if NOMS[ele_noms] == nom:
+            return print(nom, "a fait", NB_PLONGEES[ele_noms], "plongées")
+        else:
+            return print("Le nom", nom, "n'est pas dans la liste")
 
 
 def dico():
@@ -28,8 +29,13 @@ def meilleur_nom_plongeur():
 
 
 def main():
-    print(plonges())
+    nom = input("Nom du plongeur : ")
+    nom_plongeur(nom)
+    print("\n")
+    print("Dicionnaire des plongeurs :")
     print(dico())
+    print("\n")
+    print("Le meilleur plongeur est :")
     print(meilleur_nom_plongeur())
 
 
