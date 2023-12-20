@@ -1,8 +1,13 @@
-# from fis_cup_data import *
+from fis_cup_data import *
 
-
+def points(placement):
+    if placement not in DIC_POINTS:
+        return 0
+    else:
+        return DIC_POINTS[placement]
 def question1():
     print("=== Question 1 ===")
+    print(points(99))
 
 
 def question2():
